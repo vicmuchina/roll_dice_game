@@ -29,11 +29,22 @@ max_score = 50
 score = [0 for i in  range(players)] 
 print(score)
 
+counter = 0
+round = 0
+
 while True:
     for i in range(players):
         print("Player", str(i+1) + "'s Turn")
+        counter += 1
+
+        if counter%2 == 0:
+            round += 1
+            print("Round", round)
+        else:
+            print("Round", round)
+
         while True:
-            action = input("Do you want to roll or hold? ").lower()
+            action = input("Do you want to roll, hold or quit? ").lower()
         
             if action == "roll":
 
@@ -50,9 +61,15 @@ while True:
 
                     if score[i] >= max_score:
                         print("Player", str(i+1), "wins!")
-                        
+                        print("Your total score is", score[i],"Player", str(i+1) + "has won the game!")
+
+                        break
+                    
             elif action == "hold":
                 break
+
+            elif action == "quit":
+                quit()
             else:
                 print("Invalid input")
 
